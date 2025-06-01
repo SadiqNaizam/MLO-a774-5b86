@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -19,6 +20,7 @@ export default {
 		},
 		extend: {
 			colors: {
+        // Shadcn UI style variable mappings (values updated by CSS vars in index.css)
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -52,22 +54,27 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        // PRD specific colors (direct hex values for ease of use)
+        'app-surface': '#FFFFFF',      // PRD 'surface'
+        'sidebar': '#E9EBEC',         // PRD 'sidebar'
+        'primary-text': '#212529',     // PRD 'primaryText'
+        'secondary-text': '#878A99',  // PRD 'secondaryText'
+        'accent-blue': '#299CDB',      // PRD 'accentBlue'
+        'accent-red': '#F06548',       // PRD 'accentRed'
+        'accent-green': '#0AB39C',     // PRD 'accentGreen'
+        'accent-yellow': '#FFC107',    // PRD 'accentYellow'
+        // Note: PRD 'background' color is available via `background: hsl(var(--background))`
+        // Note: PRD 'border' color is available via `border: hsl(var(--border))`
 			},
 			borderRadius: {
+        // Values are relative to --radius CSS variable (set to 0.375rem in index.css based on PRD)
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
